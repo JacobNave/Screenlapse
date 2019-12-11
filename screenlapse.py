@@ -10,7 +10,6 @@ import tkinter.ttk
 
 
 if __name__ == "__main__":
-	#bool values
 	running = False
 	endProgram = False
 	totalTime = 0
@@ -49,12 +48,10 @@ if __name__ == "__main__":
 		lastTime = time.time()
 		global lastRunTime
 		lastRunTime = time.time()
-		#print(running)
 
 	def stopRecord():
 		global running
 		running = False
-		#print(running)
 
 	def export():
 		if(imageCount == 0):
@@ -101,9 +98,7 @@ if __name__ == "__main__":
 
 	top = tkinter.Tk()
 	top.attributes("-topmost", True)
-	#frame = tkinter.Frame(top, width = 100, height = 50)
 	top.resizable(False, False)
-	#frame.pack()
 	top.geometry("150x70")
 
 
@@ -139,14 +134,9 @@ if __name__ == "__main__":
 
 
 
-	#top.after(0, newImage)
 	top.protocol("WM_DELETE_WINDOW", onClose)
-	#top.mainloop()
 
 	while not endProgram:
-		#totalTime = time.time() - startTime
-		#print(abs(time.time() - lastTime))
-		#print(running)
 		if(running):
 			totalTime += time.time() - lastRunTime
 			lastRunTime = time.time()
@@ -154,7 +144,6 @@ if __name__ == "__main__":
 
 
 		if(running and abs(time.time() - lastTime) >= 5):
-			#print("newImage")
 			lastTime = time.time()
 			path = os.getcwd()	
 
@@ -165,46 +154,3 @@ if __name__ == "__main__":
 
 		top.update_idletasks()
 		top.update()
-
-	'''
-	def runProgram():
-
-		while(not endProgram):
-			while(running):
-				print("newImage")
-				path = os.getcwd()
-
-				count = 0	
-
-
-
-				s = path + "\\Video Images\\" + str(count) + ".png"
-
-				im =ImageGrab.grab()
-				im.save(s)
-				count+=1
-				time.sleep(3)'''
-
-'''
-	answer = input("are you ready to convert: ")
-
-
-
-	#convert images to video
-	if(answer == 'y'):	
-
-		print("converting")
-		img_array = []
-		size = 0
-		for filename in glob.glob(os.getcwd() + "\\Video Images\\" + '*.png'):
-			img = cv2.imread(filename)
-			height, width, layers = img.shape
-			size = (width,height)
-			img_array.append(img)
-
-		out = cv2.VideoWriter('project.avi',cv2.VideoWriter_fourcc(*'DIVX'), 2, size)
-
-		for i in range(len(img_array)):
-			out.write(img_array[i])
-		out.release()
-'''
