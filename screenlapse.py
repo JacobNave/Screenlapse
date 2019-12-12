@@ -26,21 +26,6 @@ if __name__ == "__main__":
 		startTime = time.time()
 	lastTime = time.time();
 
-	def newImage():
-		print(abs(time.time() - lastTime))
-		print(running)
-		if(running and abs(time.time() - lastTime) >= 5):
-			print("newImage")
-			path = os.getcwd()
-
-			count = 0	
-
-			s = path + "\\Video Images\\" + str(count) + ".png"
-
-			im =ImageGrab.grab()
-			last = time.time()
-
-
 	def startRecord():
 		global running
 		running = True
